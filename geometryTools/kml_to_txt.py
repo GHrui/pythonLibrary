@@ -2,7 +2,7 @@
 # !/usr/bin/env python
 
 import os
-# 列出当前目录下所有的文件
+# 列出txt目录下所有的文件
 files = os.listdir(".")
 for filename in files:
     portion = os.path.splitext(filename)

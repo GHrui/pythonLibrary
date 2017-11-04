@@ -12,7 +12,7 @@ import re
 path = ".\\Demo\\txt\\polygon"
 files = os.listdir(path)
 dir_name = os.path.dirname(os.path.abspath(files[0]))
-prj = dir_name + ".\\Demo\\prj\\WGS 1984.prj"
+prj = ".\\Demo\\prj\\WGS 1984.prj"
 pat = re.compile(r'<coordinates>')
 for filename in files:
     portion = os.path.splitext(filename)

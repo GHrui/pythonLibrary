@@ -9,15 +9,15 @@ import arcpy
 import os
 import re
 
-path = "../txt/"
+path = ".\\Demo\\txt\\polygon"
 files = os.listdir(path)
-dir_name = os.path.dirname(os.path.dirname(os.path.abspath(files[0])))
-prj = dir_name + "\\prj\\WGS 1984.prj"
+dir_name = os.path.dirname(os.path.abspath(files[0]))
+prj = dir_name + ".\\Demo\\prj\\WGS 1984.prj"
 pat = re.compile(r'<coordinates>')
 for filename in files:
     portion = os.path.splitext(filename)
     basename = portion[0]
-    openfile = open(dir_name + '\\txt\\' + filename, 'r')
+    openfile = open(dir_name + '\\Demo\\txt\\polygon\\' + filename, 'r')
     line = openfile.readline()
     while line:
         flag = pat.findall(line)
@@ -32,5 +32,6 @@ for filename in files:
         point = arcpy.Point(X=point_xyz[0], Y=point_xyz[1], Z=point_xyz[2])
         point_array.add(point)
     feature = arcpy.Polygon(point_array, prj)
-    arcpy.CopyFeatures_management(feature, dir_name + '\\shp\\' + basename + '.shp')
+    print(dir_name + '\\Demo\\shp\\polygon\\' + basename + '.shp')
+    arcpy.CopyFeatures_management(feature, dir_name + '\\Demo\\shp\\polygon\\' + basename + '.shp')
     openfile.close()
